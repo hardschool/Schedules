@@ -15,7 +15,9 @@ struct ContentView: View {
         NavigationStack {
             SchedulesView()
                 .navigationTitle("Schedules")
+            #if os(iOS)
                 .navigationBarTitleDisplayMode(.inline)
+            #endif
                 .toolbar {
                     Button("Add") {
                         isPopoverPresented.toggle()
@@ -27,10 +29,6 @@ struct ContentView: View {
         }
         .environmentObject(appState)
     }
-}
-
-final class AppState: ObservableObject {
-    var schedules: [Schedule] = []
 }
 
 #Preview {
