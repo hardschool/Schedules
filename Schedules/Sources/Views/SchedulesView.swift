@@ -96,5 +96,18 @@ private extension Date {
 }
 
 #Preview {
+    let calendar = Calendar.current
+
+    let startTime = calendar.date(bySettingHour: 8, minute: 35, second: 0, of: .now)!
+    let endTime = calendar.date(bySettingHour: 9, minute: 50, second: 0, of: .now)!
+
+    let schedules = [
+        Schedule(id: "0", startTime: startTime, endTime: endTime, title: "Work in UITests"),
+    ]
+
+    let appState = AppState()
+    appState.schedules = schedules
+
     return SchedulesView()
+        .environmentObject(appState)
 }
